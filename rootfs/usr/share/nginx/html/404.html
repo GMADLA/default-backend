@@ -1,173 +1,547 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" media="screen" rel="stylesheet" />
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" media="screen" rel="stylesheet" />
-    <style>
-      *{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,caption,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;outline:0;vertical-align:baseline;background:transparent}article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display:block}html{font-size:16px;line-height:24px;width:100%;height:100%;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;overflow-y:scroll;overflow-x:hidden}img{vertical-align:middle;max-width:100%;height:auto;border:0;-ms-interpolation-mode:bicubic}body{min-height:100%;-webkit-font-smoothing:subpixel-antialiased}.clearfix{clear:both;zoom:1}.clearfix:before,.clearfix:after{content:&quot;\0020&quot;;display:block;height:0;visibility:hidden}.clearfix:after{clear:both}
-    </style>
-    <style>
-  .plain.error-page-wrapper {
-    font-family: 'Source Sans Pro', sans-serif;
-    background-color:#6355bc;
-    padding:0 5%;
-    position:relative;
-  }
-  .plain.error-page-wrapper .content-container {
-    -webkit-transition: left .5s ease-out, opacity .5s ease-out;
-    -moz-transition: left .5s ease-out, opacity .5s ease-out;
-    -ms-transition: left .5s ease-out, opacity .5s ease-out;
-    -o-transition: left .5s ease-out, opacity .5s ease-out;
-    transition: left .5s ease-out, opacity .5s ease-out;
-    max-width:400px;
-    position:relative;
-    left:-30px;
-    opacity:0;
-  }
-  .plain.error-page-wrapper .content-container.in {
-    left: 0px;
-    opacity:1;
-  }
-  .plain.error-page-wrapper .head-line {
-    transition: color .2s linear;
-    font-size:48px;
-    line-height:60px;
-    color:rgba(255,255,255,.2);
-    letter-spacing: -1px;
-    margin-bottom: 5px;
-  }
-  .plain.error-page-wrapper .subheader {
-    transition: color .2s linear;
-    font-size:36px;
-    line-height:46px;
-    color:#fff;
-  }
-  .plain.error-page-wrapper hr {
-    height:1px;
-    background-color: rgba(255,255,255,.2);
-    border:none;
-    width:250px;
-    margin:35px 0;
-  }
-  .plain.error-page-wrapper .context {
-    transition: color .2s linear;
-    font-size:18px;
-    line-height:27px;
-    color:#fff;
-  }
-  .plain.error-page-wrapper .context p {
-    margin:0;
-  }
-  .plain.error-page-wrapper .context p:nth-child(n+2) {
-    margin-top:12px;
-  }
-  .plain.error-page-wrapper .buttons-container {
-    margin-top: 45px;
-    overflow: hidden;
-  }
-  .plain.error-page-wrapper .buttons-container a {
-    transition: color .2s linear, border-color .2s linear;
-    font-size:14px;
-    text-transform: uppercase;
-    text-decoration: none;
-    color:#fff;
-    border:2px solid white;
-    border-radius: 99px;
-    padding:8px 30px 9px;
-    display: inline-block;
-    float:left;
-  }
-  .plain.error-page-wrapper .buttons-container a:hover {
-    background-color:rgba(255,255,255,.05);
-  }
-  .plain.error-page-wrapper .buttons-container a:first-child {
-    margin-right:25px;
-  }
-  @media screen and (max-width: 485px) {
-    .plain.error-page-wrapper .header {
-      font-size:36px;
-     }
-    .plain.error-page-wrapper .subheader {
-      font-size:27px;
-      line-height:38px;
-     }
-    .plain.error-page-wrapper hr {
-      width:185px;
-      margin:25px 0;
-     }
-    .plain.error-page-wrapper .context {
-      font-size:16px;
-      line-height: 24px;
-     }
-    .plain.error-page-wrapper .buttons-container {
-      margin-top:35px;
-    }
-    .plain.error-page-wrapper .buttons-container a {
-      font-size:13px;
-      padding:8px 0 7px;
-      width:45%;
-      text-align: center;
-    }
-    .plain.error-page-wrapper .buttons-container a:first-child {
-      margin-right:10%;
-    }
-  }
-</style>
-    <style>
-    .background-color {
-      background-color: rgba(74, 144, 226, 1) !important;
-    }
-    .primary-text-color {
-      color: #FFFFFF !important;
-    }
-    .secondary-text-color {
-      color: rgba(194, 190, 190, 1) !important;
-    }
-    .sign-text-color {
-      color: #FFBA00 !important;
-    }
-    .sign-frame-color {
-      color: #343C3F;
-    }
-    .pane {
-      background-color: #FFFFFF !important;
-    }
-    .border-button {
-      color: #FFFFFF !important;
-      border-color: #FFFFFF !important;
-    }
-    .button {
-      background-color: #FFFFFF !important;
-      color:  !important;
-    }
-</style>
-  </head>
-  <body class="plain error-page-wrapper background-color background-image">
-    <div class="content-container">
-    <div class="head-line secondary-text-color">
-        404
-    </div>
-    <div class="subheader primary-text-color">
-        Oops, the page you're <br>
-        looking for does not exist.
-    </div>
-    <hr>
-    <div class="clearfix"></div>
-    <div class="context primary-text-color">
-        <!-- doesn't use context_content because it's ALWAYS the same thing -->
-    <p>
-      You may want to head back to the homepage.<br />
-      If you think something is broken, report a problem.
-    </p>
-    </div>
-    <div class="buttons-container">
-        <a class="border-button" href="{{ getenv "HOMEPAGE" }}" target="_blank">Go To Homepage</a>
-        <a class="border-button" href="mailto:{{ getenv "EMAIL" }}" target="_blank">Report A Problem</a>
-    </div>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if IE 9]><html class="ie9" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+<html xmlns:fb="http://ogp.me/ns/fb#" lang="en">
+
+<head itemscope itemtype="https://schema.org/WebSite">
+
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+
+
+  <link rel="dns-prefetch" href="//www.kmt1.net" />
+      <link rel="dns-prefetch" href="//ajax.googleapis.com" />
+      <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+      <link rel="dns-prefetch" href="//www.google-analytics.com" />
+      <link rel="dns-prefetch" href="//www.googleadservices.com" />
+      <link rel="dns-prefetch" href="//www.googletagmanager.com" />
+      <link rel="dns-prefetch" href="//sp.analytics.yahoo.com" />
+      <link rel="dns-prefetch" href="//connect.facebook.net" />
+      <link rel="dns-prefetch" href="//www.facebook.com" />
+
+
+  <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/v5/v5_main.min.css?i=20181115" />
+<link rel="stylesheet" type="text/css" href="/css/lightslider.min.css" />
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript">
+if(typeof jQuery == 'undefined'){ ___localJqueryLoaded=true; document.write('<script type="text/javascript" src="/js/jquery/jquery-1.7.2.js"><\/sc' + 'ript>' ); }
+</script>
+<script type="text/javascript" src="/js/gf/gf_general.min.js"></script>
+<title>$1* buys up to $100,000 life insurance at Globe Life And Accident Insurance</title>
+  <meta name="description" content="$1* buys up to $100,000 life insurance at Globe Life And Accident Insurance Company" />
+  <meta name="keywords" content="Life Insurance, Affordable Life Insurance, Term Life Insurance" />
+    <!-- meta name="robots" content="noydir" />
+  <meta name="robots" content="noodp" /> -->
+  <meta itemprop="name" content="Globe Life And Accident Insurance Company" />
+    <link rel="canonical" href="https://www.globelifeinsurance.com/pagesnotfound" />
+
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="$1* buys up to $100,000 life insurance at Globe Life And Accident Insurance" />
+    <meta property="og:description" content="$1* buys up to $100,000 life insurance at Globe Life And Accident Insurance Company" />
+    <meta property="og:url" content="https://www.globelifeinsurance.com/pagesnotfound" />
+
+    <link rel="publisher" href="https://plus.google.com/113166769258575101142" />
+  <link rel="image_src" href="//www.globelifeinsurance.com/images/general/globe_logo_pic_sq2.png" />
+
+  <meta name="msvalidate.01" content="88118FDED88A5D06D7CEA70CF7CDE533" />
+  <meta name="google-site-verification" content="jHy4DwiQNEqXc713BIb4us3VkPQDsAzpAA9snq7X3eI" />
+
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="icon" type="image/ico" href="/favicon.ico" />
+
+  <script type="text/javascript" src="/diocles/diocles.min.js"></script>
+
+</head>
+
+<body >
+
+  <header class="top-menu-bar">
+
+
+<a href="/">
+<img src="//d1ess95jw7q1js.cloudfront.net/images/v5/globe_logo_new.png" class="top-company-logo" alt="Globe Life Logo" /></a>
+<nav>
+<img src="//d1ess95jw7q1js.cloudfront.net/images/v5/menu_bars.png" alt="MENU" class="top-menu-3bars">
+<img src="//d1ess95jw7q1js.cloudfront.net/images/v5/x-close.png" alt="X" class="top-menu-close showHideMenu">
+<div class="divOverlayPage showHideMenu"></div>
+<ul id="top-main-menu">
+    <li>
+        <div class="main-sub-nav">
+            <ul class="top-sm-icons-2">
+                <li class="top-sm-icons fb-icon1"><a href="//www.facebook.com/GlobeLifeAndAccidentInsuranceCompany" target="_blank"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Facebook" /></a></li>
+                <li class="top-sm-icons tw-icon1"><a href="//twitter.com/GlobeLife" target="_blank"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Twitter" /></a></li>
+                <li class="top-sm-icons ig-icon1"><a href="https://www.instagram.com/globelifeinsurance/" target="_blank"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Instagram" /></a></li>
+                <li class="top-sm-icons yt-icon1"><a href="https://www.youtube.com/user/GlobeLifeInsurance" target="_blank"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Youtube" /></a></li>
+            </ul>
+       </div>
+    </li>
+
+    <li><a href="/adult" onclick="return false">Products</a>
+        <div class="main-sub-nav">
+            <div class="main-sub-nav-position nav-life-insurance">
+                <div class="nav-sub-nav-holder">
+                    <h4>Insurance Products</h4>
+                                            <ul>
+                            <li><a href="/adult" >Term Life Insurance</a></li>
+                                                        <li><a href="/adult-whole-life">Whole Life Insurance</a></li>
+                                                        <li><a href="/child">Children's Life Insurance</a></li>
+                        </ul>
+                                                <ul>
+                            <li><a href="/accidental-death-insurance" >Accidental Benefits Insurance</a></li>
+                            <li><a href="/mortgage-protection-insurance" >Mortgage Protection Insurance</a></li>
+                            <li><a href="/globecaremedsupp" >Medicare Supplement Plans</a></li>
+                        </ul>
+                                                                                    </div>
+            </div>
+        </div>
+    </li>
+    <li><a href="/about" onclick="return false">About Us</a>
+        <div class="main-sub-nav">
+            <div class="main-sub-nav-position nav-about-us">
+                <div class="nav-sub-nav-holder">
+                    <h4 class="subnav-headline">About Us</h4>
+                    <ul>
+                        <li><a href="/about">About <span class="gsta_company_name_short gsta_element">Globe Life</span></a></li>
+                                                <li><a href="/globe_history">History of Globe Life</a></li>
+                        <li><a href="https://www.esdglobe.com/" target="_blank">For Government Employees</a></li>
+                                            </ul>
+                </div>
+                <div class="nav-sub-nav-holder">
+                    <h4 class="subnav-headline">Careers</h4>
+                    <ul>
+                        <li><a href="/careers">Career Opportunities</a></li>
+                        <li><a href="/internships">Internships</a></li>
+                    </ul>
+                </div>
+                                <div class="nav-sub-nav-holder">
+                    <h4 class="subnav-headline">Community</h4>
+                    <ul>
+                        <li><a href="/community/">Community Involvement</a></li>
+                        <li><a href="/globe-life-park">Globe Life Park</a></li>
+                        <li><a href="/press-releases/">Globe Life News</a></li>
+                    </ul>
+                </div>
+                            </div>
+        </div>
+
+    </li>
+    <li><a href="/contact" class="last-item" onclick="return false">Customer Service</a>
+        <div class="main-sub-nav">
+            <div class="main-sub-nav-position nav-customer-service">
+
+                <div class="nav-sub-nav-holder">
+                    <h4 class="subnav-headline">Contact Us</h4>
+                    <ul>
+                        <li><a href="/contact">Customer Service</a></li>
+                                                <li><a href="/globe-life-mobile-app">Download Globe Life Mobile App</a></li>
+                                            </ul>
+                </div>
+                <div class="nav-sub-nav-holder">
+                                        <h4 class="subnav-headline">Policyholders</h4>
+                    <ul>
+                        <li><a href="https://eservicecenter.globeontheweb.com/" target="_blank">Login to eService Center</a></li>
+                        <!-- <li><a href="https://eservicecenter.globeontheweb.com/registerstep1.aspx" target="_blank">Register for eService Center</a></li> -->
+                        <li><a href="https://eservicecenter.globeontheweb.com/" target="_blank">Pay Your Bill Online</a></li>
+                        <li><a href="/claims/">Claim Filing Services</a></li>
+                    </ul>
+                                    </div>
+                <div class="nav-sub-nav-holder">
+                    <h4 class="subnav-headline">Frequently Asked Questions</h4>
+                    <ul>
+                        <li><a href="/faq?qa=1">How do I apply for coverage?</a></li>
+                        <li><a href="/faq?qa=2">How do I pay my bill?</a></li>
+                        <li><a href="/faq?qa=6">How do I file a claim?</a></li>
+                        <li><a href="/faq">More FAQs...</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
+</nav>
+
+
+
+<ul id="top-addtl-links">
+        <li class="policyholder-login"><a href="https://eservicecenter.globeontheweb.com/" target="_blank">Policyholder Login</a></li>
+    <li>
+        <ul>
+            <li class="top-sm-icons fb-icon1"><a href="https://www.facebook.com/GlobeLifeInsurance" target="_blank"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Facebook" /></a></li>
+            <li class="top-sm-icons tw-icon1"><a href="https://twitter.com/GlobeLife" target="_blank"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Twitter" /></a></li>
+            <li class="top-sm-icons ig-icon1"><a href="https://www.instagram.com/globelifeinsurance/" target="_blank"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Instagram" /></a></li>
+            <li class="top-sm-icons yt-icon1"><a href="https://www.youtube.com/user/GlobeLifeInsurance" target="_blank"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Youtube" /></a></li>
+        </ul>
+    </li>
+        <li class="phonenumber-top"><a href="tel:1-800-742-6787">1-800-742-6787</a> <img src="//d1ess95jw7q1js.cloudfront.net/images/v5/phone_icon.png" class="small-phone-icon" alt="Tel"></li>
+</ul>
+
+<a href="#top" class="get_more_info_button"><img src="//d1ess95jw7q1js.cloudfront.net/images/v5/get_more_information_button2.png" class="get_more_info" alt="Get More Information"></a>
+
+
+
+
+
+  </header>
+
+
+
+<main>
+
+
+
+  <!--  CONTENT  -->
+
+<div class="info_page_holder info-page-holder error-page" style="padding-bottom: 0;">
+<h2 style="text-align: center; font-size: 30px;">Error 404</h2>
+
+<div class="error" style="text-align: center; font-size: 18px; margin-bottom: 10px;">
+Whoops!! That was not expected ...</div>
+
+<center>
+<img src="/images/common/MonocleGirl.jpg" alt="Error 404" />
+</center>
+
 </div>
-    <script>
+  <!--  END CONTENT -->
+
+    <div style="clear:both"><!-- --></div>
+        <div class="main-join-video-holder">
+        <div class="main-join-video-shader">
+        <h3>        Join <span class="gsta_num_of_policy_holders gsta_element">4.2 Million</span> Current Globe Life Policyholders
+        </h3></div>
+                <video width="100%" height="1200" autoplay loop class="video_parallax">
+          <!-- <source src="http://dsvi4iy4fd2ol.cloudfront.net/GirlLearningToRideBike_320.mp4" type="video/mp4" media="all and (max-width:400px)"> -->
+          <source src="//dsvi4iy4fd2ol.cloudfront.net/GirlLearningToRideBike.mp4" type="video/mp4">
+        </video>
+            </div>
+
+
+    <div class="globe-life-trust-statements-section">
+
+                    <h3><span class="gsta_company_name_short gsta_element">Globe Life</span> has been protecting America&rsquo;s families since 1951</h3>
+
+          <div class="globe-life-ratings-holder">
+              <img src="//d1ess95jw7q1js.cloudfront.net/images/v5/a-plus_logo.jpg" alt="A plus rating" class="globe-life-a-plus-rating" />
+              <div class="globe-life-trust-statement"><span class="gsta_company_name_short gsta_element">Globe Life</span> continues to receive an A+ (Superior)** rating from A.M. Best Company
+              based on their latest analysis of <span class="gsta_company_name_short gsta_element">Globe Life</span>'s financial strength, management skills and integrity.
+              <span class="trust-statement-date">(rating as of 7/18)</span></div>
+                               <div class="globe-life-trust-statement">Rated A+ by the Better Business Bureau<br />
+                 <span class="trust-statement-date">Accredited Since 1952</span></div>
+                        </div>
+
+    </div>
+
+
+
+</main>
+<footer>
+    <div class="bottom-main-nav-section">
+        <ul>
+            <li><a href="">Home</a></li>
+            <li><a href="https://eservicecenter.globeontheweb.com/" target="_blank">Policyholder Login</a></li>
+            <li><a href="/privacy">Privacy</a></li>
+            <li><a href="/terms">Terms &amp; Conditions</a></li>
+            <li><a href="/article_list">Articles</a></li>
+            <li><a href="/faq">FAQ</a></li>
+            <li><a href="/hipaa">HIPAA Statement</a></li>
+            <li><a href="/disaster_assistance">Disaster Assistance</a></li>
+        </ul>
+    </div>
+
+
+    <div class="bottom-links-section-holder">
+
+        <div class="bottom-insurance-links-section">
+
+            <h3>Insurance Selections</h3>
+                        <ul>
+                <li><a href="/affordablelifeinsurance">Affordable Life Insurance</a></li>
+                <li><a href="/termlifeinsurance">Term Life Insurance</a></li>
+                <li><a href="/childlifeinsurance">Children's Life Insurance</a></li>
+                <li><a href="/wholelifeinsurance">Whole Life Insurance</a></li>
+            </ul>
+            <ul>
+
+                <li><a href="/seniorlifeinsurance">Senior Life Insurance</a></li>
+                <li><a href="/familylifeinsurance">Family Life Insurance</a></li>
+                <li><a href="/lifeinsurancenomedicalexam">No Medical Exam&mdash;<br />Simple Application</a></li>
+            </ul>
+            <ul>
+                <li><a href="/burial">Burial and Funeral Insurance</a></li>
+                <li><a href="/life-insurance-for-veterans">Life Insurance for Veterans</a></li>
+                <li><a href="/final-expense-insurance">Final Expense Insurance</a></li>
+                <li><a href="/young-family-life-insurance">Young Family Life Insurance </a></li>
+
+              <!--  <li><a href="/compare-and-save">Compare and Save</a></li>
+                <li><a href="/trust-globe-life-insurance">Trust Globe Life Insurance</a></li> -->
+            </ul>
+           <!-- <ul>
+                <li><a href="/easy-to-buy">Easy To Buy</a></li>
+                <li><a href="/free-quotes">Free Quotes</a></li>
+                <li><a href="/rates-as-low-as-3-dollars-and-49-cents-per-month">Rates as Low as $3.49 per month</a></li>
+            </ul> -->
+
+
+                </div>
+
+        <div class="bottom-about-company-links-section">
+            <h3>About Us</h3>
+            <ul>
+                              <li><a href="/about">About Globe Life</a></li>
+                                <li><a href="/careers">Careers</a></li>
+                <li><a href="/contact">Customer Service</a></li>
+            </ul>
+                        <a target="_blank" id="bbblink" class="ruhzbus" href="//www.bbb.org/dallas/business-reviews/insurance-companies/globe-life-and-accident-insurance-company-in-oklahoma-city-ok-90715683#bbbseal" title="Globe Life and Accident Insurance Company is a BBB Accredited Insurance Company in Oklahoma City, OK"><img style="border: none;" id="bbblinkimg" src="//seal-dallas.bbb.org/logo/ruhzbus/globe-life-and-accident-insurance-company-90715683.png" class="lower-bbb-logo" alt="Globe Life and Accident Insurance Company is a BBB Accredited Insurance Company in Oklahoma City, OK" onMouseOver="$(this).css('float','right')" onMouseOut="$(this).css('float','left')" /></a>
+                  </div>
+        <div style="clear:both"><!--spacer--></div>
+
+        <p class="lower-legal-text ">
+                                        *$1 pays for the first month of children&rsquo;s coverage. Then the rate
+              is based on your child&rsquo;s present age and is guaranteed to stay the
+              same for the rest of their life.
+              <span class="gsta_footer_policy_single_dagger gsta_element">Policy Form # GWL2001 or GWLA001</span><br />
+                          *$1 pays for the first month&rsquo;s adult coverage. Then the rate
+              schedule is based on your current age and is guaranteed for the life of
+              the policy.
+              <span class="gsta_footer_policy_double_dagger gsta_element">Policy Form # SRTCV/SRTCV13</span>. Offer may vary.<br />
+               **A.M. Best Company rating as of
+              7/18 based on financial strength, management skill and integrity. For the latest rating, access
+                    <a href="http://www.ambest.com" target="_blank">www.ambest.com</a>.
+                                      </p>
+    </div>
+
+    <div class="footer-section">
+        <div class="footer-info">
+            <div class="footer-branding">
+                              <img src="//d1ess95jw7q1js.cloudfront.net/images/v5/torchmark_building.jpg" alt="Torchmark Corporation" class="corporate-building-footer-pic" />
+
+                                <div class="footer-brand-statement1"><span class="gsta_company_name_short gsta_element">Globe Life</span> has been protecting America&rsquo;s families since 1951</div>
+                                <div class="footer-brand-statement2">
+                <span class="gsta_company_name_short gsta_element">Globe Life</span> continues to receive an A+ (Superior)** rating from A.M. Best Company
+                based on their latest analysis of <span class="gsta_company_name_short gsta_element">Globe Life</span>'s financial strength, management skills
+                and integrity. (rating as of 7/18)
+                </div>
+
+
+            </div><div class="footer-sm-icons">
+                            <ul>
+                    <li class="bottom-sm-icons fb-icon2"><a href="//www.facebook.com/GlobeLifeInsurance" target="_blank"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Facebook" /></a></li>
+                    <li class="bottom-sm-icons tw-icon2"><a href="//twitter.com/GlobeLife" target="_blank"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Twitter" /></a></li>
+                    <li class="bottom-sm-icons ig-icon2"><a href="//www.instagram.com/globelifeinsurance/" target="_blank"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Instagram" /></a></li>
+                    <li class="bottom-sm-icons yt-icon2"><a href="//www.youtube.com/user/GlobeLifeInsurance" target="_blank"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Youtube" /></a></li>
+                </ul>
+                  </div><div class="footer-address-info">
+                <span class="gsta_footer_copyright gsta_element">GMADW08 &copy;2005-2018 <span class="gsta_company_name_long gsta_element">Globe Life And Accident Insurance</span> Company, McKinney, TX All Rights Reserved.<br />Licensed in the United States CA Certificate Authority #4140 </span>            </div>
+        </div>
+
+    </div>
+</footer>
+
+
+
+
+<script type="text/javascript">
+function parallax(){
+    var scrolled = $(window).scrollTop();
+    var topSection = $('.top-section').css('background-position');
+    if (topSection) {
+      var sideBackgroundPosition = topSection.split(" ");
+      $('.top-section').css('background-position', sideBackgroundPosition[0] + " " + (scrolled * 0.2) + 'px' );
+      // $('.video_parallax').css('margin-top', "-" + ((scrolled*0.3) + 80) + 'px');
+
+      if (scrolled > 200) {
+          $('.top-company-logo').addClass('top-company-logo-small');
+          $('.top-menu-3bars').addClass('top-menu-3bars-small');
+
+      } else {
+          $('.top-company-logo').removeClass('top-company-logo-small');
+          $('.top-menu-3bars').removeClass('top-menu-3bars-small');
+      }
+  }
+
+  }
+</script>
+
+<script src="/js/v5/layout_footer.js"></script>
+
+<script src="/js/jquery.lightslider.min.js"></script>
+<script>
+
+  $(document).ready(function() {
+    $("#lightSlider").lightSlider({
+        item:5,
+        adaptiveHeight:true,
+        responsive : [
+            {
+                breakpoint:1150,
+                settings: {
+                    item:4,
+                    slideMove:1,
+                    slideMargin:6,
+                  }
+            },
+            {
+                breakpoint:900,
+                settings: {
+                    item:3,
+                    slideMove:1
+                  }
+            },
+            {
+                breakpoint:650,
+                settings: {
+                    item:2,
+                    slideMove:1
+                  }
+            },
+            {
+                breakpoint:450,
+                settings: {
+                    item:2,
+                    slideMove:1
+                  }
+            }
+        ]
+    });
+
+    $("#lightSlider2").lightSlider({
+        item:2,
+        adaptiveHeight:true,
+    });
+
+  });
+
+</script>
+
+<script src="/js/scrollreveal.min.js"></script>
+<script>
+ window.sr = ScrollReveal().reveal('.community-involvement-section, .main-join-video-holder, .globe-life-trust-statements-section, .bottom-links-section-holder, .footer-section, .bottom-main-nav-section ', { duration: 400 });
+</script>
+
+
+<!-- remarketing pixel --> <!-- end remarketing pixel -->
+<!-- quantcast pixel --> <!-- end quantcast pixel -->
+
+<!--  Begin Static pixels ----------------------------- -->
+
+
+
+<!-- GT-R --><noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-WT7T3R"
+height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WT7T3R');</script>
+
+
+
+<!-- Y-R --><script type="application/javascript">
+  (function(w,d,t,r,u){w[u]=w[u]||[];w[u].push({'projectId':'10000','properties':{'pixelId':'15263'}});var s=d.createElement(t);s.src=r;s.async=true;s.onload=s.onreadystatechange=function(){var y,rs=this.readyState,c=w[u];if(rs&&rs!="complete"&&rs!="loaded"){return}try{y=YAHOO.ywa.I13N.fireBeacon;w[u]=[];w[u].push=function(p){y([p])};y(c)}catch(e){}};var scr=d.getElementsByTagName(t)[0],par=scr.parentNode;par.insertBefore(s,scr)})(window,document,"script","https://s.yimg.com/wi/ytc.js","dotq");
+</script>
+
+
+
+<!-- B-R --><script>(function(w,d,t,r,u){var f,n,i;w[u]=w[u]||[],f=function(){var o={ti:"4012170"};o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")},n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function(){var s=this.readyState;s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)},i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)})(window,document,"script","//bat.bing.com/bat.js","uetq");</script>
+<noscript>
+<img src="//bat.bing.com/action/0?ti=4012170&Ver=2" height="0" width="0" style="display:none; visibility: hidden;" />
+</noscript>
+
+
+<!-- FB-R --><script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+
+fbq('init', '669820649773429');
+fbq('track', "PageView");
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=669820649773429&ev=PageView&noscript=1"
+/></noscript>
+<!-- End FB-R -->
+
+
+<!--  End Static pixels ------------------------------- -->
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=DC-8269361"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'DC-8269361');
+  gtag('config', 'AW-1061709242');
+</script>
+
+
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-1060391163"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-1060391163');
+</script>
+
+
+
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-782959504"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-782959504');
+</script>
+
+
+
+
+
+
+
+    <!-- Gmad - GA - renders: 1 -->
+  <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-50968501-1', 'auto');
+  ga('require', 'displayfeatures');
+
+  ga( 'set', 'dimension2', 'glitest.net/63.170.247.153.1545085830.895403' );
+  ga( 'set', 'dimension3', 'dev.glitest.net' );
+  ga( 'set', 'dimension4', 'dev.glitest.net' );
+  ga( 'set', 'dimension6', 'or' );
+  ga( 'send', 'pageview' );
+  </script>
+    <!-- end GA -->
+
+<script>
       function ErrorPage(e,t,n){this.$container=$(e),this.$contentContainer=this.$container.find(n=="sign"?".sign-container":".content-container"),this.pageType=t,this.templateName=n}ErrorPage.prototype.centerContent=function(){var e=this.$container.outerHeight(),t=this.$contentContainer.outerHeight(),n=(e-t)/2,r=this.templateName=="sign"?-100:0;this.$contentContainer.css("top",n+r)},ErrorPage.prototype.initialize=function(){var e=this;this.centerContent(),this.$container.on("resize",function(t){t.preventDefault(),t.stopPropagation(),e.centerContent()}),this.templateName=="plain"&&window.setTimeout(function(){e.$contentContainer.addClass("in")},500),this.templateName=="sign"&&$(".sign-container").animate({textIndent:0},{step:function(e){$(this).css({transform:"rotate("+e+"deg)","transform-origin":"top center"})},duration:1e3,easing:"easeOutBounce"})},ErrorPage.prototype.createTimeRangeTag=function(e,t){return"<time utime="+e+' simple_format="MMM DD, YYYY HH:mm">'+e+"</time> - <time utime="+t+' simple_format="MMM DD, YYYY HH:mm">'+t+"</time>."},ErrorPage.prototype.handleStatusFetchSuccess=function(e,t){if(e=="503")$("#replace-with-fetched-data").html(t.status.description);else if(!t.scheduled_maintenances.length)$("#replace-with-fetched-data").html("<em>(there are no active scheduled maintenances)</em>");else{var n=t.scheduled_maintenances[0];$("#replace-with-fetched-data").html(this.createTimeRangeTag(n.scheduled_for,n.scheduled_until)),$.fn.localizeTime()}},ErrorPage.prototype.handleStatusFetchFail=function(e){$("#replace-with-fetched-data").html("<em>(enter a valid StatusPage.io url)</em>")},ErrorPage.prototype.fetchStatus=function(e,t){if(!e||!t||t=="404")return;var n="",r=this;t=="503"?n=e+"/api/v2/status.json":n=e+"/api/v2/scheduled-maintenances/active.json",$.ajax({type:"GET",url:n}).success(function(e,n){r.handleStatusFetchSuccess(t,e)}).fail(function(e,n){r.handleStatusFetchFail(t)})};
       var ep = new ErrorPage('body', "404", "plain");
       ep.initialize();
@@ -176,6 +550,5 @@
         $('body').trigger('resize')
       });
     </script>
-  </body>
+</body>
 </html>
-
