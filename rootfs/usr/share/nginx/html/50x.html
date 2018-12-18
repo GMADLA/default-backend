@@ -249,7 +249,28 @@ if(typeof jQuery == 'undefined'){ ___localJqueryLoaded=true; document.write('<sc
           </div>
         </div>
       </footer>
-<script src="/js/v5/layout_footer.js"></script>
+      <script type="text/javascript">
+        function parallax(){
+            var scrolled = $(window).scrollTop();
+            var topSection = $('.top-section').css('background-position');
+            if (topSection) {
+              var sideBackgroundPosition = topSection.split(" ");
+              $('.top-section').css('background-position', sideBackgroundPosition[0] + " " + (scrolled * 0.2) + 'px' );
+              // $('.video_parallax').css('margin-top', "-" + ((scrolled*0.3) + 80) + 'px');
+
+              if (scrolled > 200) {
+                  $('.top-company-logo').addClass('top-company-logo-small');
+                  $('.top-menu-3bars').addClass('top-menu-3bars-small');
+
+              } else {
+                  $('.top-company-logo').removeClass('top-company-logo-small');
+                  $('.top-menu-3bars').removeClass('top-menu-3bars-small');
+              }
+          }
+
+          }
+        </script>
+      <script src="/js/v5/layout_footer.js"></script>
 
       <!-- end GA -->
       <script>
